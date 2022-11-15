@@ -6,7 +6,12 @@ ModelImporter:
   - first:
       74: -1881513580907979650
     second: FBX_Temp
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color-1
+    second: {fileID: 2100000, guid: 952a0614b2ef3d34686fd198c12d7b59, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
