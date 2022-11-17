@@ -9,6 +9,16 @@ public class CollectCoin : MonoBehaviour
   public int Score;
   public TextMeshProUGUI CoinText;
   public PlayerController playerController;
+  public int maxScore;
+  Animator PlayerAnim;
+  public GameObject Player;
+  public GameObject Finish;
+
+   private void Start() 
+   {
+    PlayerAnim = Player.GetComponentInChildren<Animator>();
+
+   }
     
    private void OnTriggerEnter(Collider other)
    {
@@ -21,7 +31,25 @@ public class CollectCoin : MonoBehaviour
        {
          Debug.Log("tebriks!!");
          playerController.runningSpeed = 0;
+         transform.Rotate(transform.rotation.x, 180, transform.rotation.z, Space.Self);
+         Finish.SetActive(true);
+         
+         if(Score >= maxScore)
+         {
+          //Debug.Log("you are win!!");
+          PlayerAnim.SetBool("win", true);
+         }
+         else
+         {
+          //Debug.Log("you are lose!!");
+          PlayerAnim.SetBool("lose", true);
+         }
        }
+   }
+
+   public void RestartGame()
+   {
+      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
    }
 
    private void OnCollisionEnter(Collision collision)
